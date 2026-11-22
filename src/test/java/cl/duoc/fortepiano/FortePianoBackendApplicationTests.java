@@ -1,4 +1,4 @@
-package cl.duoc.forte_piano_backend;
+package cl.duoc.fortepiano;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
