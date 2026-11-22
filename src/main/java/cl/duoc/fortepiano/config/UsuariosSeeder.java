@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class UsuariosSeeder implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final ComunaRepository comunaRepository;
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) {
@@ -74,7 +76,7 @@ public class UsuariosSeeder implements CommandLineRunner {
                             .nombre("Patricio")
                             .apellidos("Céspedes")
                             .correo("admin@gmail.com")
-                            .password("admin123")
+                            .password(passwordEncoder.encode("admin123"))
                             .fechaNacimiento("1990-05-15")
                             .rolId(1)
                             .regionId(13)
@@ -89,7 +91,7 @@ public class UsuariosSeeder implements CommandLineRunner {
                             .nombre("Daniel")
                             .apellidos("Aedo")
                             .correo("vendedor@gmail.com")
-                            .password("vend1234")
+                            .password(passwordEncoder.encode("vend1234"))
                             .fechaNacimiento("1992-08-20")
                             .rolId(2)
                             .regionId(13)
@@ -104,7 +106,7 @@ public class UsuariosSeeder implements CommandLineRunner {
                             .nombre("Camila")
                             .apellidos("Silva")
                             .correo("camila@gmail.com")
-                            .password("cliente1")
+                            .password(passwordEncoder.encode("cliente1"))
                             .fechaNacimiento("1998-11-03")
                             .rolId(3)
                             .regionId(5)
@@ -119,7 +121,7 @@ public class UsuariosSeeder implements CommandLineRunner {
                             .nombre("Diego")
                             .apellidos("Morales")
                             .correo("diego@duoc.cl")
-                            .password("diego123")
+                            .password(passwordEncoder.encode("diego123"))
                             .fechaNacimiento("2001-02-14")
                             .rolId(3)
                             .regionId(13)
@@ -128,7 +130,7 @@ public class UsuariosSeeder implements CommandLineRunner {
                             .estado("Activo")
                             .build()
             ));
-            log.info("4 Usuarios semilla sembrados exitosamente.");
+            log.info("4 Usuarios semilla sembrados exitosamente (con BCrypt).");
         }
     }
 }

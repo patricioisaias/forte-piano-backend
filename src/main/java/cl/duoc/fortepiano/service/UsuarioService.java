@@ -3,6 +3,7 @@ package cl.duoc.fortepiano.service;
 import cl.duoc.fortepiano.entity.Usuario;
 import cl.duoc.fortepiano.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final RutValidatorService rutValidatorService;
+    private final PasswordEncoder passwordEncoder;
 
     public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
@@ -22,7 +24,6 @@ public class UsuarioService {
 
     public Optional<Usuario> buscarPorRun(String run) {
         String runLimpio = rutValidatorService.limpiarRun(run);
-        // Buscar por RUN tal cual o buscar con formato estándar
         return usuarioRepository.findById(run)
                 .or(() -> usuarioRepository.findAll().stream()
                         .filter(u -> rutValidatorService.limpiarRun(u.getRun()).equalsIgnoreCase(runLimpio))
@@ -49,6 +50,10 @@ public class UsuarioService {
 
         if (usuarioRepository.existsByCorreoIgnoreCase(usuario.getCorreo())) {
             throw new IllegalArgumentException("Ya existe un usuario registrado con el correo: " + usuario.getCorreo());
+        }
+
+        if (usuario.getPassword() != null && !usuario.getPassword().isBlank()) {
+            usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         }
 
         if (usuario.getEstado() == null || usuario.getEstado().isBlank()) {
@@ -83,7 +88,7 @@ public class UsuarioService {
             usuarioExistente.setCorreo(datosActualizados.getCorreo());
         }
         if (datosActualizados.getPassword() != null && !datosActualizados.getPassword().isBlank()) {
-            usuarioExistente.setPassword(datosActualizados.getPassword());
+            usuarioExistente.setPassword(passwordEncoder.encode(datosActualizados.getPassword()));
         }
         if (datosActualizados.getFechaNacimiento() != null) {
             usuarioExistente.setFechaNacimiento(datosActualizados.getFechaNacimiento());
