@@ -277,7 +277,7 @@ A nivel macro, el sistema ofrece cuatro subsistemas integrados:
 
 #### 3.3.3. Fiabilidad e Integridad Transaccional
 - **Propiedades ACID:** Toda operación de mutación que afecte más de una tabla (ej. Boleta + Ítems + Descuento de Stock) se ejecuta bajo `@Transactional`; si ocurre cualquier excepción, se realiza rollback automático impidiendo inconsistencias de stock.
-- **Pruebas Automatizadas:** Cobertura de pruebas unitarias con **JUnit 5 y Mockito** ejecutadas contra base de datos en memoria **H2** (`40 pruebas pasando con 0 fallos`).
+- **Pruebas Automatizadas:** Cobertura de pruebas unitarias con **JUnit 5 y Mockito** ejecutadas contra base de datos en memoria **H2** (**67 pruebas pasando con 0 fallos**).
 
 #### 3.3.4. Disponibilidad y Escalabilidad
 - **Arquitectura Stateless:** Al no mantener sesión en el servidor, la API permite balanceo de carga y escalabilidad horizontal transparente.

@@ -500,7 +500,7 @@ def build_pdf(filename="docs/ERS-FortePiano-v2.0.pdf"):
 
     story.append(Paragraph("3.3.3. Fiabilidad e Integridad Transaccional", h3_style))
     story.append(Paragraph("• Atomicidad y consistencia ACID garantizadas mediante anotaciones <code>@Transactional</code> en operaciones críticas.", bullet_style))
-    story.append(Paragraph("• Cobertura de pruebas unitarias automatizadas con <b>JUnit 5 y Mockito</b> (<b>40 pruebas pasando exitosamente con 0 fallos</b>).", bullet_style))
+    story.append(Paragraph("• Cobertura de pruebas unitarias automatizadas con <b>JUnit 5 y Mockito</b> (<b>67 pruebas pasando exitosamente con 0 fallos</b>).", bullet_style))
 
     story.append(Paragraph("3.3.4. Disponibilidad y Escalabilidad", h3_style))
     story.append(Paragraph("• Arquitectura Stateless desacoplada que permite balanceo de carga y escalabilidad horizontal transparente.", bullet_style))
