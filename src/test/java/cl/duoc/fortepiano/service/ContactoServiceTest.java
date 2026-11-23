@@ -102,4 +102,57 @@ class ContactoServiceTest {
         assertEquals(1, lista.size());
         verify(mensajeContactoRepository, times(1)).findAllByOrderByIdDesc();
     }
+
+    @Test
+    @DisplayName("registrarContacto acepta correos @gmail.com")
+    void registrarContactoConGmailAceptado() {
+        MensajeContactoRequest request = MensajeContactoRequest.builder()
+                .nombre("Cliente Prueba")
+                .correo("cliente.prueba@gmail.com")
+                .comentario("¿Tienen stock del sintetizador Nord?")
+                .build();
+
+        when(mensajeContactoRepository.save(any(MensajeContacto.class)))
+                .thenAnswer(i -> i.getArgument(0));
+
+        MensajeContacto guardado = contactoService.registrarContacto(request);
+
+        assertNotNull(guardado);
+        assertEquals("cliente.prueba@gmail.com", guardado.getCorreo());
+    }
+
+    @Test
+    @DisplayName("registrarContacto rechaza nombre o correo nulos/vacíos")
+    void registrarContactoCamposObligatoriosLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class,
+                () -> contactoService.registrarContacto(null));
+
+        MensajeContactoRequest sinNombre = MensajeContactoRequest.builder()
+                .nombre("  ")
+                .correo("valido@duoc.cl")
+                .comentario("Hola")
+                .build();
+        assertThrows(IllegalArgumentException.class,
+                () -> contactoService.registrarContacto(sinNombre));
+
+        MensajeContactoRequest sinCorreo = MensajeContactoRequest.builder()
+                .nombre("Nombre")
+                .correo("")
+                .comentario("Hola")
+                .build();
+        assertThrows(IllegalArgumentException.class,
+                () -> contactoService.registrarContacto(sinCorreo));
+    }
+
+    @Test
+    @DisplayName("esDominioValido acepta y rechaza los dominios configurados")
+    void esDominioValidoCasos() {
+        assertTrue(contactoService.esDominioValido("test@gmail.com"));
+        assertTrue(contactoService.esDominioValido("docente@profesor.duoc.cl"));
+        assertTrue(contactoService.esDominioValido("alumno@duoc.cl"));
+        assertFalse(contactoService.esDominioValido("test@yahoo.es"));
+        assertFalse(contactoService.esDominioValido("test@outlook.com"));
+        assertFalse(contactoService.esDominioValido(null));
+        assertFalse(contactoService.esDominioValido(""));
+    }
 }

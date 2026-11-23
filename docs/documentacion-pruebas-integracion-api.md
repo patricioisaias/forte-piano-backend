@@ -391,7 +391,7 @@ El frontend desarrollado en **React + TypeScript + Vite** interactúa con el bac
 
 ## 5. Batería de Pruebas Automatizadas (JUnit 5 + Mockito)
 
-El backend cuenta con **67 pruebas unitarias e integradas automatizadas**, ejecutadas exitosamente contra base de datos en memoria H2 (`BUILD SUCCESS`):
+El backend cuenta con **58 pruebas unitarias e integradas automatizadas**, ejecutadas exitosamente contra base de datos en memoria H2 (`BUILD SUCCESS`):
 
 | Suite de Prueba | Cantidad | Resultado | Alcance de la Prueba |
 | :--- | :---: | :---: | :--- |
@@ -401,7 +401,6 @@ El backend cuenta con **67 pruebas unitarias e integradas automatizadas**, ejecu
 | **`ProductoServiceTest`** | 5 | 5 / 5 Aprobados | Cálculo de `precioOferta`, control de stock crítico y validación de SKU único. |
 | **`DashboardServiceTest`** | 6 | 6 / 6 Aprobados | Agregación de ventas totales, cálculo de porcentajes por estado y ranking de productos. |
 | **`NoticiaServiceTest`** | 5 | 5 / 5 Aprobados | Consulta por slug, listado y persistencia de párrafos. |
-| **`ContactoServiceTest`** | 4 | 4 / 4 Aprobados | Validación de longitud y dominio en mensajes de contacto. |
-| **`NoticiaContactoServiceTest`** | 12 | 12 / 12 Aprobados | Casos de borde en contenido y mensajería. |
+| **`ContactoServiceTest`** | 7 | 7 / 7 Aprobados | Validación de longitud y dominio en mensajes de contacto, campos obligatorios y método `esDominioValido`. |
 | **`FortePianoBackendApplicationTests`** | 1 | 1 / 1 Aprobado | Carga y configuración de contexto de Spring Boot (`contextLoads`). |
-| **TOTAL GENERAL** | **67** | **67 / 67 Aprobados (0 fallos)** | **100% de éxito en la suite de pruebas automatizadas.** |
+| **TOTAL GENERAL** | **58** | **58 / 58 Aprobados (0 fallos)** | **100% de éxito en la suite de pruebas automatizadas.** |

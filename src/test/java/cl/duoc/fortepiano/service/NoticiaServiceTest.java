@@ -63,6 +63,7 @@ class NoticiaServiceTest {
 
         assertTrue(encontrada.isPresent());
         assertEquals("Cómo elegir tu primer piano digital: Guía completa 2026", encontrada.get().getTitulo());
+        assertEquals(2, encontrada.get().getContenido().size());
     }
 
     @Test
@@ -73,6 +74,8 @@ class NoticiaServiceTest {
         Optional<Noticia> noEncontrada = noticiaService.buscarPorSlug("inexistente");
 
         assertTrue(noEncontrada.isEmpty());
+        assertTrue(noticiaService.buscarPorSlug(null).isEmpty());
+        assertTrue(noticiaService.buscarPorSlug("   ").isEmpty());
     }
 
     @Test
