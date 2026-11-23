@@ -7,6 +7,8 @@ API REST para el sistema E-Commerce musical **Forte & Piano**, desarrollada en *
 - **Documentación y Guía de Desarrollo:** Consulte [docs/plan-migracion-backend-springboot.md](docs/plan-migracion-backend-springboot.md)
 - **Matriz de Endpoints y Documentación de API:** Consulte [docs/documentacion-api-fortepiano.md](docs/documentacion-api-fortepiano.md)
 - **Especificación de Requisitos de Software (ERS v2.0):** [docs/ERS-FortePiano-v2.0.md](docs/ERS-FortePiano-v2.0.md) | Versión PDF: [docs/ERS-FortePiano-v2.0.pdf](docs/ERS-FortePiano-v2.0.pdf)
+- **Documentación de Pruebas e Integración de APIs:** [docs/documentacion-pruebas-integracion-api.md](docs/documentacion-pruebas-integracion-api.md) | Versión PDF: [docs/documentacion-pruebas-integracion-api.pdf](docs/documentacion-pruebas-integracion-api.pdf)
+- **Manual de Usuario:** [docs/manual-de-usuario-fortepiano.md](docs/manual-de-usuario-fortepiano.md) | Versión PDF: [docs/manual-de-usuario-fortepiano.pdf](docs/manual-de-usuario-fortepiano.pdf)
 
 ---
 
