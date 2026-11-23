@@ -5,6 +5,7 @@ API REST para el sistema E-Commerce musical **Forte & Piano**, desarrollada en *
 - **Repositorio Backend:** [https://github.com/patricioisaias/forte-piano-backend](https://github.com/patricioisaias/forte-piano-backend)
 - **Repositorio Frontend:** [https://github.com/lich73/forte-piano-react](https://github.com/lich73/forte-piano-react)
 - **Documentación y Guía de Desarrollo:** Consulte [docs/plan-migracion-backend-springboot.md](docs/plan-migracion-backend-springboot.md)
+- **Matriz de Endpoints y Documentación de API:** Consulte [docs/documentacion-api-fortepiano.md](docs/documentacion-api-fortepiano.md)
 
 ---
 
