@@ -390,23 +390,22 @@ def generate_api_doc_pdf(filename="docs/documentacion-pruebas-integracion-api.pd
     # Pruebas automatizadas
     story.append(Paragraph("Batería de Pruebas Unitarias Automatizadas (JUnit 5 + Mockito)", s['h1']))
     story.append(Paragraph(
-        "El backend cuenta con <b>67 pruebas unitarias e integradas automatizadas</b>, ejecutadas exitosamente "
+        "El backend cuenta con <b>58 pruebas unitarias e integradas automatizadas</b>, ejecutadas exitosamente "
         "contra base de datos en memoria H2 con 0 fallos (<code>BUILD SUCCESS</code>):",
         s['body']
     ))
 
     t_data = [
         [Paragraph("Suite de Pruebas", s['table_header']), Paragraph("Cantidad", s['table_header']), Paragraph("Resultado", s['table_header']), Paragraph("Alcance de la Prueba", s['table_header'])],
-        [Paragraph("RutValidatorServiceTest", s['table_cell_bold']), Paragraph("19", s['table_cell']), Paragraph("19/19 OK", s['table_cell']), Paragraph("Módulo 11 (cuerpo + DV), rechazo sin DV y dominios @duoc.cl, @gmail.com.", s['table_cell'])],
+        [Paragraph("RutValidatorServiceTest", s['table_cell_bold']), Paragraph("19", s['table_cell']), Paragraph("19/19 OK", s['table_cell']), Paragraph("Módulo 11 (cuerpo + DV), rechazo sin DV y dominios @duoc.cl, @profesor.duoc.cl, @gmail.com.", s['table_cell'])],
         [Paragraph("AuthServiceTest", s['table_cell_bold']), Paragraph("6", s['table_cell']), Paragraph("6/6 OK", s['table_cell']), Paragraph("Login exitoso, credenciales erróneas, registro con BCrypt y sesión activa.", s['table_cell'])],
         [Paragraph("BoletaServiceTest", s['table_cell_bold']), Paragraph("9", s['table_cell']), Paragraph("9/9 OK", s['table_cell']), Paragraph("Checkout aprobado/rechazado/pendiente, reintento y anulación con stock.", s['table_cell'])],
         [Paragraph("ProductoServiceTest", s['table_cell_bold']), Paragraph("5", s['table_cell']), Paragraph("5/5 OK", s['table_cell']), Paragraph("Cálculo precioOferta, control stock crítico y validación de SKU.", s['table_cell'])],
         [Paragraph("DashboardServiceTest", s['table_cell_bold']), Paragraph("6", s['table_cell']), Paragraph("6/6 OK", s['table_cell']), Paragraph("Agregación de ventas, porcentajes por estado y ranking top 5.", s['table_cell'])],
         [Paragraph("NoticiaServiceTest", s['table_cell_bold']), Paragraph("5", s['table_cell']), Paragraph("5/5 OK", s['table_cell']), Paragraph("Búsqueda por slug, listado y orden de párrafos.", s['table_cell'])],
-        [Paragraph("ContactoServiceTest", s['table_cell_bold']), Paragraph("4", s['table_cell']), Paragraph("4/4 OK", s['table_cell']), Paragraph("Validación de longitud y lista blanca de dominios de correo.", s['table_cell'])],
-        [Paragraph("NoticiaContactoServiceTest", s['table_cell_bold']), Paragraph("12", s['table_cell']), Paragraph("12/12 OK", s['table_cell']), Paragraph("Pruebas combinadas y casos de borde en blog y mensajería.", s['table_cell'])],
+        [Paragraph("ContactoServiceTest", s['table_cell_bold']), Paragraph("7", s['table_cell']), Paragraph("7/7 OK", s['table_cell']), Paragraph("Validación de longitud y dominio en mensajes de contacto, campos obligatorios y método esDominioValido.", s['table_cell'])],
         [Paragraph("FortePianoBackendApplicationTests", s['table_cell_bold']), Paragraph("1", s['table_cell']), Paragraph("1/1 OK", s['table_cell']), Paragraph("Carga y configuración íntegra de contexto Spring Boot.", s['table_cell'])],
-        [Paragraph("TOTAL GENERAL", s['table_header']), Paragraph("67", s['table_header']), Paragraph("67/67 OK", s['table_header']), Paragraph("100% de éxito en la suite de pruebas automatizadas.", s['table_header'])],
+        [Paragraph("TOTAL GENERAL", s['table_header']), Paragraph("58", s['table_header']), Paragraph("58/58 OK", s['table_header']), Paragraph("100% de éxito en la suite de pruebas automatizadas.", s['table_header'])],
     ]
 
     t_pruebas = Table(t_data, colWidths=[140, 45, 65, 254])
