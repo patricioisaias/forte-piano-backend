@@ -47,7 +47,7 @@ class LandscapeNumberedCanvas(canvas.Canvas):
         self.restoreState()
 
 
-def generate_api_doc_pdf(filename="docs/documentacion-api-fortepiano.pdf"):
+def generate_api_doc_pdf(filename="docs/pdf/documentacion-api-fortepiano.pdf"):
     # 792 x 612 pt (landscape letter)
     # Margins: 36 pt left/right, 42 pt top/bottom -> Printable width: 720 pt
     doc = SimpleDocTemplate(

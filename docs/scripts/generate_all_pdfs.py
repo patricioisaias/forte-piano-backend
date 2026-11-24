@@ -221,7 +221,7 @@ def make_figure(fig_num, fig_title, ascii_mockup, note, styles):
 # =============================================================================
 # 1. GENERAR: Documentación de APIs e Integración
 # =============================================================================
-def generate_api_doc_pdf(filename="docs/documentacion-pruebas-integracion-api.pdf"):
+def generate_api_doc_pdf(filename="docs/pdf/documentacion-pruebas-integracion-api.pdf"):
     doc = SimpleDocTemplate(
         filename,
         pagesize=letter,
@@ -429,7 +429,7 @@ def generate_api_doc_pdf(filename="docs/documentacion-pruebas-integracion-api.pd
 # =============================================================================
 # 2. GENERAR: Manual de Usuario
 # =============================================================================
-def generate_user_manual_pdf(filename="docs/manual-de-usuario-fortepiano.pdf"):
+def generate_user_manual_pdf(filename="docs/pdf/manual-de-usuario-fortepiano.pdf"):
     doc = SimpleDocTemplate(
         filename,
         pagesize=letter,

@@ -46,7 +46,7 @@ class NumberedCanvas(canvas.Canvas):
         self.line(54, 47, 558, 47)
         self.restoreState()
 
-def build_pdf(filename="docs/ERS-FortePiano-v2.0.pdf"):
+def build_pdf(filename="docs/pdf/ERS-FortePiano-v2.0.pdf"):
     doc = SimpleDocTemplate(
         filename,
         pagesize=letter,
