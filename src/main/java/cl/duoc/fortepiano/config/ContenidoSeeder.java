@@ -9,6 +9,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Datos iniciales del Módulo C (Contenido, Blog y Noticias).
@@ -31,6 +32,7 @@ public class ContenidoSeeder implements CommandLineRunner {
     private void sembrarNoticias() {
         if (noticiaRepository.count() > 0) {
             log.info("ContenidoSeeder: Las noticias del blog ya existen, no se insertan nuevamente.");
+            repararImagenesExistentes();
             return;
         }
 
@@ -38,7 +40,7 @@ public class ContenidoSeeder implements CommandLineRunner {
                 Noticia.builder()
                         .titulo("Cómo elegir tu primer piano digital: Guía completa 2026")
                         .resumen("Descubre los aspectos clave para elegir un piano digital: acción del teclado, polifonía, conectividad y relación precio-calidad.")
-                        .imagen("noticias/noticia-guia-piano-digital.webp")
+                        .imagen("blog/piano.webp")
                         .fecha("15-10-2026")
                         .slug("detalle-1")
                         .contenido(List.of(
@@ -51,7 +53,7 @@ public class ContenidoSeeder implements CommandLineRunner {
                 Noticia.builder()
                         .titulo("Mantenimiento y cuidado esencial para pianos acústicos")
                         .resumen("Aprende cómo proteger tu piano acústico de las variaciones de humedad, temperatura y la importancia de la afinación periódica.")
-                        .imagen("noticias/noticia-cuidado-piano-acustico.webp")
+                        .imagen("blog/apertura_nueva.jpg")
                         .fecha("20-10-2026")
                         .slug("detalle-2")
                         .contenido(List.of(
@@ -64,7 +66,7 @@ public class ContenidoSeeder implements CommandLineRunner {
                 Noticia.builder()
                         .titulo("Sintetizadores modernos: La evolución del sonido analógico y digital")
                         .resumen("Exploramos las diferencias entre síntesis analógica, digital y virtual analógica en los teclados de escenario actuales.")
-                        .imagen("noticias/noticia-sintetizadores-modernos.webp")
+                        .imagen("blog/apertura.jpg")
                         .fecha("25-10-2026")
                         .slug("detalle-3")
                         .contenido(List.of(
@@ -77,5 +79,38 @@ public class ContenidoSeeder implements CommandLineRunner {
 
         noticiaRepository.saveAll(noticias);
         log.info("ContenidoSeeder: {} noticias del blog sembradas exitosamente.", noticias.size());
+    }
+
+    /**
+     * Corrige rutas de imagen antiguas (prefijo "noticias/") que no existen en
+     * public/img del frontend. Solo actúa sobre rutas vacías o rotas para no
+     * sobrescribir valores válidos ya guardados.
+     */
+    private void repararImagenesExistentes() {
+        Map<String, String> imagenesPorSlug = Map.of(
+                "detalle-1", "blog/piano.webp",
+                "detalle-2", "blog/apertura_nueva.jpg",
+                "detalle-3", "blog/apertura.jpg"
+        );
+
+        List<Noticia> noticias = noticiaRepository.findAll();
+        boolean cambios = false;
+
+        for (Noticia noticia : noticias) {
+            String imagenEsperada = imagenesPorSlug.get(noticia.getSlug());
+            boolean rutaRota = noticia.getImagen() == null
+                    || noticia.getImagen().isBlank()
+                    || noticia.getImagen().startsWith("noticias/");
+
+            if (imagenEsperada != null && rutaRota) {
+                noticia.setImagen(imagenEsperada);
+                cambios = true;
+            }
+        }
+
+        if (cambios) {
+            noticiaRepository.saveAll(noticias);
+            log.info("ContenidoSeeder: rutas de imagen del blog reparadas.");
+        }
     }
 }

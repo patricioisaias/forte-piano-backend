@@ -16,4 +16,7 @@ public class SesionDto {
     private String correo;
     private Integer rolId;
     private String rolNombre;
+    private Integer regionId;
+    private Integer comunaId;
+    private String direccion;
 }

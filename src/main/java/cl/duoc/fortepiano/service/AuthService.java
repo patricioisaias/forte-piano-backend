@@ -137,6 +137,9 @@ public class AuthService {
                 .correo(usuario.getCorreo())
                 .rolId(usuario.getRolId())
                 .rolNombre(rolNombre)
+                .regionId(usuario.getRegionId())
+                .comunaId(usuario.getComunaId())
+                .direccion(usuario.getDireccion())
                 .build();
     }
 }
